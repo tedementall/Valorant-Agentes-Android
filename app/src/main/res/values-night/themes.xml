@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.ValorantApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/valorant_red</item>
+        <item name="colorOnPrimary">@color/valorant_dark</item>
+
+        <item name="android:colorBackground">@color/valorant_dark</item>
+        <item name="colorSurface">@color/valorant_dark</item>
+
+        <item name="colorOnSurface">@color/valorant_cream</item>
+
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Theme.ValorantApp" parent="Base.Theme.ValorantApp" />
+</resources>
