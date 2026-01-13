@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_agents">
+
+    <fragment
+        android:id="@+id/nav_agents"
+        android:name="com.example.valorantapp.ui.AgentsFragment"
+        android:label="Agentes"
+        tools:layout="@layout/fragment_agents" >
+        <action
+            android:id="@+id/action_nav_agents_to_agentDetailFragment"
+            app:destination="@id/agentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agentDetailFragment"
+        android:name="com.example.valorantapp.ui.AgentDetailFragment"
+        android:label="Detalles del Agente"
+        tools:layout="@layout/fragment_agent_detail" >
+        <argument
+            android:name="agentUuid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_weapons"
+        android:name="com.example.valorantapp.ui.WeaponsFragment"
+        android:label="Armas"
+        tools:layout="@layout/fragment_weapons" >
+        <action
+            android:id="@+id/action_nav_weapons_to_weaponDetailFragment"
+            app:destination="@id/weaponDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weaponDetailFragment"
+        android:name="com.example.valorantapp.ui.WeaponDetailFragment"
+        android:label="Detalles del Arma"
+        tools:layout="@layout/fragment_weapon_detail">
+        <argument
+            android:name="weaponUuid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_maps"
+        android:name="com.example.valorantapp.ui.MapsFragment"
+        android:label="Mapas"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_nav_maps_to_mapDetailFragment"
+            app:destination="@id/mapDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapDetailFragment"
+        android:name="com.example.valorantapp.ui.MapDetailFragment"
+        android:label="Detalles del Mapa"
+        tools:layout="@layout/fragment_map_detail" >
+        <argument
+            android:name="mapUuid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_skins"
+        android:name="com.example.valorantapp.ui.BundlesFragment"
+        android:label="Packs de Skins"
+        tools:layout="@layout/fragment_bundles">
+        <action
+            android:id="@+id/action_nav_skins_to_bundleDetailFragment"
+            app:destination="@id/bundleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bundleDetailFragment"
+        android:name="com.example.valorantapp.ui.BundleDetailFragment"
+        android:label="Detalles del Pack"
+        tools:layout="@layout/fragment_bundle_detail">
+        <argument
+            android:name="bundleUuid"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_bundleDetailFragment_to_skinDetailFragment"
+            app:destination="@id/skinDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/skinDetailFragment"
+        android:name="com.example.valorantapp.ui.SkinDetailFragment"
+        android:label="Detalle de Skin"
+        tools:layout="@layout/fragment_skin_detail">
+        <argument
+            android:name="skinUuid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_sprays"
+        android:name="com.example.valorantapp.ui.SpraysFragment"
+        android:label="Sprays"
+        tools:layout="@layout/fragment_sprays" />
+
+    <fragment
+        android:id="@+id/nav_player_cards"
+        android:name="com.example.valorantapp.ui.PlayerCardsFragment"
+        android:label="Tarjetas de Jugador"
+        tools:layout="@layout/fragment_player_cards" >
+        <action
+            android:id="@+id/action_nav_player_cards_to_playerCardDetailFragment"
+            app:destination="@id/playerCardDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerCardDetailFragment"
+        android:name="com.example.valorantapp.ui.PlayerCardDetailFragment"
+        android:label="Detalle de Tarjeta"
+        tools:layout="@layout/fragment_player_card_detail">
+        <argument
+            android:name="cardUuid"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_competitive_tiers"
+        android:name="com.example.valorantapp.ui.CompetitiveTiersFragment"
+        android:label="Episodios y Rangos"
+        tools:layout="@layout/fragment_competitive_tiers" >
+        <action
+            android:id="@+id/action_nav_competitive_tiers_to_competitiveTierDetailFragment"
+            app:destination="@id/competitiveTierDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/competitiveTierDetailFragment"
+        android:name="com.example.valorantapp.ui.CompetitiveTierDetailFragment"
+        android:label="Rangos del Episodio"
+        tools:layout="@layout/fragment_competitivetier_detail">
+        <argument
+            android:name="episodeUuid"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,74 +1,66 @@
 package com.example.valorantapp
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-import com.example.valorantapp.data.*
-import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.launch
-import java.lang.Exception
-import com.example.valorantapp.R
+import android.os.Bundle
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Habilitar edge-to-edge
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         setContentView(R.layout.activity_main)
 
-        val searchInput = findViewById<TextInputEditText>(R.id.etAgentName)
-        val searchButton = findViewById<Button>(R.id.btnSearch)
-        val resultText = findViewById<TextView>(R.id.tvResult)
-        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-        val agentIcon = findViewById<ImageView>(R.id.ivAgentIcon)
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        val drawerNavView = findViewById<NavigationView>(R.id.drawer_nav_view)
 
-        searchButton.setOnClickListener {
-            val agentName = searchInput.text.toString()
-
-            if (agentName.isNotBlank()) {
-                progressBar.visibility = View.VISIBLE
-                resultText.text = ""
-                agentIcon.setImageResource(0)
-
-                lifecycleScope.launch {
-                    try {
-
-                        val response = RetrofitClient.instance.getAgents("es-MX", true)
-
-                        if (response.data != null) {
-                            val foundAgent = response.data.find {
-                                it.displayName?.equals(agentName, ignoreCase = true) == true
-                            }
-
-                            if (foundAgent != null) {
-                                resultText.text = foundAgent.description
-
-                                Glide.with(this@MainActivity)
-                                    .load(foundAgent.displayIcon)
-                                    .into(agentIcon)
-
-                            } else {
-                                resultText.text = "Agente no encontrado."
-                            }
-                        } else {
-                            resultText.text = "La API no devolvió datos de agentes."
-                        }
-
-                        progressBar.visibility = View.GONE
-
-                    } catch (e: Exception) {
-                        progressBar.visibility = View.GONE
-                        resultText.text = "Error: ${e.message}"
-                        Log.e("MainActivity", "Error en la API", e)
-                    }
-                }
-            }
+        // Aplicar insets para que el toolbar no quede detrás de la status bar
+        ViewCompat.setOnApplyWindowInsetsListener(toolbar) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                view.paddingLeft,
+                systemBars.top,
+                view.paddingRight,
+                view.paddingBottom
+            )
+            insets
         }
+
+        // Aplicar insets para el bottom navigation
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNavView) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(
+                view.paddingLeft,
+                view.paddingTop,
+                view.paddingRight,
+                systemBars.bottom
+            )
+            insets
+        }
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.nav_agents, R.id.nav_weapons, R.id.nav_maps),
+            drawerLayout
+        )
+        toolbar.setupWithNavController(navController, appBarConfiguration)
+
+        bottomNavView.setupWithNavController(navController)
+        drawerNavView.setupWithNavController(navController)
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_skins"
+            android:icon="@drawable/ic_skins"
+            android:title="Skins" />
+
+        <item
+            android:id="@+id/nav_sprays"
+            android:icon="@drawable/ic_sprays"
+            android:title="Sprays" />
+
+        <item
+            android:id="@+id/nav_player_cards"
+            android:icon="@drawable/ic_player_cards"
+            android:title="Tarjetas de Jugador" />
+
+        <item
+            android:id="@+id/nav_competitive_tiers"
+            android:icon="@drawable/ic_ranks" android:title="Rangos" />
+
+    </group>
+</menu>

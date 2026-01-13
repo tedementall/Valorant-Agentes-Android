@@ -1,15 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.ValorantApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Tema principal de la aplicación -->
+    <style name="Theme.ValorantApp" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/valorant_red</item>
         <item name="colorOnPrimary">@color/valorant_dark</item>
-
         <item name="android:colorBackground">@color/valorant_dark</item>
         <item name="colorSurface">@color/valorant_dark</item>
-
         <item name="colorOnSurface">@color/valorant_cream</item>
-
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <style name="Theme.ValorantApp" parent="Base.Theme.ValorantApp" />
+    <!-- Estilo para la Toolbar (barra superior) -->
+    <style name="Valorant.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/valorant_dark</item>
+    </style>
+
+    <!-- Estilo para la Bottom Navigation (barra inferior) -->
+    <style name="Valorant.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/valorant_dark</item>
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+    </style>
+
+    <!-- Estilo para el Navigation Drawer (menú lateral) -->
+    <style name="Valorant.NavigationView" parent="Widget.Material3.NavigationView">
+        <item name="android:background">@color/valorant_dark</item>
+        <item name="itemIconTint">@color/valorant_cream</item>
+        <item name="itemTextColor">@color/valorant_cream</item>
+    </style>
 </resources>

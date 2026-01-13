@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/valorant_dark"
+    android:clipToPadding="false"
+    tools:context=".ui.WeaponDetailFragment">
+
+    <LinearLayout
+        android:id="@+id/detailContentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivWeaponDetailIcon"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/tvWeaponDetailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+            android:textColor="@color/valorant_red"
+            tools:text="Vandal" />
+
+        <TextView
+            android:id="@+id/tvWeaponStats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@color/valorant_cream"
+            tools:text="Cadencia: 9.75\nCargador: 25\nTiempo de Recarga: 2.5s"/>
+
+    </LinearLayout>
+</ScrollView>
